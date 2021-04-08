@@ -1,17 +1,26 @@
-﻿using castle_web.Models;
+﻿using System.Collections.Generic;
+using castle_web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using System.IO;
+using System.Net;
+using System.Text;
+using System.Web;
+using castle_web.Data;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.IdentityModel.Protocols;
+using Newtonsoft.Json.Linq;
 
 namespace castle_web.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private ApplicationDbContext _context;
+        public HomeController(ILogger<HomeController> logger,ApplicationDbContext context)
         {
+            _context = context;
             _logger = logger;
         }
 
@@ -35,8 +44,11 @@ namespace castle_web.Controllers
             return View();
         }
         [Authorize]
+        [HttpPost]
         public IActionResult UploadVideo()
         {
+
+            //CurrentVideo.Owner = User.Identity.;
             return View();
         }
     }

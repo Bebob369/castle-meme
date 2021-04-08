@@ -3,5 +3,16 @@
     ViewData["Title"] = "UploadVideo";
 }
 
-<h1>UploadVideo</h1>
-
+<h1 class="align-content-center">UploadVideo</h1>
+<form id="form1" method="post" enctype="multipart/form-data" asp-controller="FileUpload" asp-action="Index">
+    <div class="form-group align-content-center">
+        <input type="file" name="videos" />
+        <progress id="fileProgress" style="display: none"></progress>
+        <hr />
+        <span id="lblMessage" style="color: Green"></span>
+        <input class="form-control" id="Descrile" placeholder="Describe">
+        <input class="form-control" id="Name_Video" placeholder="Name of video">
+        <input class="form-control" id="Describe" placeholder="Describe">
+        <input class="float-right btn btn-success" type="submit" id="btnUpload" value="Upload" />
+    </div>
+</form>
