@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using castle_web.Models;
 
 namespace castle_web.Data
 {
@@ -12,5 +13,7 @@ namespace castle_web.Data
             : base(options)
         {
         }
+        public DbSet<VideoModel> Videos { get; set; }
+
     }
 }

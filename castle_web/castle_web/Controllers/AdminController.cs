@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using castle_web.Data;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace castle_web.Controllers
@@ -20,7 +21,7 @@ namespace castle_web.Controllers
         }
         public IActionResult Index()
         {
-            var users = _context.Users.ToList();
+            var users = _context.Users;
             return View(users);
         }
 
