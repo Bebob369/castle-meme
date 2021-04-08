@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>All users</h1>
+<ul>
+    @foreach (var user in Model)
+    {
+    <li>@user.Id @user.UserName + @user.Email  + @user.PhoneNumber + @user.AccessFailedCount</li>
+    <div>
+        <button>Delete</button>
+        <button>change rules</button>
+    </div>
+    }
+</ul>
