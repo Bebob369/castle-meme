@@ -39,8 +39,6 @@ namespace castle_web.Controllers
                     await _context.Videos.AddAsync(video);
                 }
             }
-
-
             return Ok();
         }
     }

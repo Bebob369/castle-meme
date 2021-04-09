@@ -47,8 +47,6 @@ namespace castle_web.Controllers
         [HttpPost]
         public IActionResult UploadVideo()
         {
-
-            //CurrentVideo.Owner = User.Identity.;
             return View();
         }
     }

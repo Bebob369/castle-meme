@@ -9,8 +9,11 @@ namespace castle_web.Repository
 {
     interface IVideoRepository
     {
-        Task AddVideo(VideoModel video);
-        Task DeleteVideo(Guid Url);
-        Task ChangeVideo(Guid Url);
+        Task<VideoModel> AddNewVideo(VideoModel video);
+        Task<List<VideoModel>> GetAllVideosOfUser(string user);
+        Task<List<VideoModel>> GetTopVideosAsync(int count);
+        Task<List<VideoModel>> SearchVideo(string Name);
+        Task<VideoModel> DeleteVideo(Guid Url);
+        Task<VideoModel> ChangeVideo(Guid Url);
     }
 }
