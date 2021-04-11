@@ -221,9 +221,8 @@ namespace castle_web.Data.Migrations
 
             modelBuilder.Entity("castle_web.Models.VideoModel", b =>
                 {
-                    b.Property<Guid>("Url")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("DateOfPublication")
                         .HasColumnType("datetime2");

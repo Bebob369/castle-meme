@@ -14,7 +14,11 @@ namespace castle_web.Repository
     {
         private readonly ApplicationDbContext _context;
         private readonly IConfiguration _configuration;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="configuration"></param>
         public VideoRepository(ApplicationDbContext context, IConfiguration configuration)
         {
             _configuration = configuration;
@@ -30,6 +34,7 @@ namespace castle_web.Repository
                 Name = video.Name,
                 Owner = video.Owner,
                 Path = video.Path,
+                Url = Helpers.GenerateUrl.GenerateUrlString(),
                 Views = 0
             };
             await _context.Videos.AddAsync(newVideo);

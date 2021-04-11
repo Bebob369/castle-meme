@@ -13,12 +13,12 @@ namespace castle_web.Models
     public class VideoModel
     {
         [Key]
-        public Guid Url { get; set; }
+        public string Url { get; set; }
         public string Owner { get; set; }
         public string Path { get; set; }
         public string Name { get; set; }
         public string Describe { get; set; }
-        public long Views { get; set; }
+        public int Views { get; set; }
         public DateTime DateOfPublication { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<VideoModel>
+@{
     ViewData["Title"] = "Profile";
 }
 <form class="float-right" asp-action="UploadVideo">
@@ -7,19 +8,20 @@
 <h2>
     Your videos
 </h2>
-<asp:GridView ID="GridView1" ShowHeaderWhenEmpty="true" HeaderStyle-CssClass="bg-primary text-white" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered">
-    <EmptyDataTemplate>
-        <div class="text-center">No Data Found <strong>Upload New Video</strong></div>
-    </EmptyDataTemplate>
-    <Columns>
-        <asp:BoundField HeaderText="ID" DataField="ID" />
-        <asp:BoundField HeaderText="Name" DataField="Name" />
-        <asp:TemplateField HeaderText="Videos">
-            <ItemTemplate>
-                <video width="130" height="130" controls>
-                    <source src='<%#Eval("Video_Path")%>' type="video/mp4">
-                </video>
-            </ItemTemplate>
-        </asp:TemplateField>
-    </Columns>
-</asp:GridView>
+@if (Model.Count == 0)
+{
+    <asp:GridView ID="GridView1" ShowHeaderWhenEmpty="true" HeaderStyle-CssClass="bg-primary text-white" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered">
+        <EmptyDataTemplate>
+            <div class="text-center">No Data Found <strong>Upload New Video</strong></div>
+        </EmptyDataTemplate>
+    </asp:GridView>
+}
+else
+{
+    @foreach (var video in Model)
+    {
+        <video >
+            <source src="@video.Path" type="video/mp4"/>
+        </video>
+    }
+}

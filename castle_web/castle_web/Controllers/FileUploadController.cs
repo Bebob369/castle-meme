@@ -6,24 +6,27 @@ using System.Linq;
 using System.Threading.Tasks;
 using castle_web.Data;
 using castle_web.Models;
+using castle_web.Repository;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 
 namespace castle_web.Controllers
 {
     public class FileUploadController : Controller
     {
-        private ApplicationDbContext _context;
-        IWebHostEnvironment _appEnvironment;
+        private IVideoRepository videoRepository;
+        private IWebHostEnvironment _appEnvironment;
 
-        public FileUploadController(ApplicationDbContext context, IWebHostEnvironment appEnvironment)
+        public FileUploadController(ApplicationDbContext context, IConfiguration configuration,
+            IWebHostEnvironment appEnvironment)
         {
             _appEnvironment = appEnvironment;
-            _context = context;
+            videoRepository = new VideoRepository(context,configuration);
         }
 
         [HttpPost("FileUpload")]
-        public async Task<IActionResult> Index(IFormFile videoRow,VideoModel video)
+        public async Task<IActionResult> Index(IFormFile videoRow, VideoModel video)
         {
             if (videoRow != null)
             {
@@ -31,14 +34,12 @@ namespace castle_web.Controllers
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     video.Owner = User.Identity.Name;
-                    video.DateOfPublication = DateTime.Now;
                     video.Path = filePath;
-                    video.Views = 0;
-                    video.Url = Guid.NewGuid();
                     await videoRow.CopyToAsync(stream);
-                    await _context.Videos.AddAsync(video);
+                    await videoRepository.AddNewVideo(video);
                 }
             }
+
             return Ok();
         }
     }

@@ -10,8 +10,8 @@
         <progress id="fileProgress" style="display: none"></progress>
         <hr/>
         <span id="lblMessage" style="color: Green"></span>
-        <input class="form-control" id="Name_Video" placeholder="Name of video" name="Name">
-        <input class="form-control" id="Describe" placeholder="Describe" name="Describe">
+        <input class="form-control" id="Name_Video" asp-for="Name" placeholder="Name of video" name="Name">
+        <input class="form-control" id="Describe" asp-for="Describe" placeholder="Describe" name="Describe">
         <input class="float-right btn btn-success" type="submit" id="btnUpload" value="Upload"/>
     </div>
 </form>

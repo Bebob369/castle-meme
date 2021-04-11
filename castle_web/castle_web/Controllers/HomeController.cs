@@ -6,9 +6,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using castle_web.Data;
+using castle_web.Repository;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Protocols;
 using Newtonsoft.Json.Linq;
 
@@ -18,10 +21,13 @@ namespace castle_web.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private ApplicationDbContext _context;
-        public HomeController(ILogger<HomeController> logger,ApplicationDbContext context)
+        private IVideoRepository videoRepository;
+        private IConfiguration _configuration;
+        public HomeController(ILogger<HomeController> logger,ApplicationDbContext context,IConfiguration configuration)
         {
             _context = context;
             _logger = logger;
+            videoRepository = new VideoRepository(context, configuration);
         }
 
         public IActionResult Index()
@@ -41,13 +47,18 @@ namespace castle_web.Controllers
         [Authorize]
         public IActionResult Profile()
         {
-            return View();
+            return View(GetVideoOfUserAsync());
         }
         [Authorize]
         [HttpPost]
         public IActionResult UploadVideo()
         {
             return View();
+        }
+
+        private List<VideoModel> GetVideoOfUserAsync()
+        {
+            return videoRepository.GetAllVideosOfUser(User.Identity.Name).Result;
         }
     }
 }
