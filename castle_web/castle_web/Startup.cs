@@ -65,6 +65,13 @@ namespace castle_web
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "content",
+                    pattern: "{controller=Content}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
+            });
         }
     }
 }

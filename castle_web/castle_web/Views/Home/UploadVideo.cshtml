@@ -6,8 +6,11 @@
 <h1 class="align-content-center">UploadVideo</h1>
 <form id="form1" method="post" enctype="multipart/form-data" asp-controller="FileUpload" asp-action="Index">
     <div class="form-group align-content-center">
-        <input type="file" name="videoRow"/>
-        <progress id="fileProgress" style="display: none"></progress>
+        <input type="file" name="videoRow" accept=".mp4"/>
+        <progress id="videoRow"
+                  class="progress-bar bg-success"
+                  role="progressbar"
+                  style="width: 25%"></progress>
         <hr/>
         <span id="lblMessage" style="color: Green"></span>
         <input class="form-control" id="Name_Video" asp-for="Name" placeholder="Name of video" name="Name">

@@ -84,12 +84,16 @@ namespace castle_web.Repository
                 }).ToListAsync();
         }
 
-        public Task<VideoModel> DeleteVideo(Guid Url)
+        public async Task<VideoModel> GetVideoByUrl(string url)
+        {
+            return (VideoModel)_context.Videos.Where(video => video.Url.Equals(url));
+        }
+        public Task<VideoModel> DeleteVideo(string Url)
         {
             return null;
         }
 
-        public Task<VideoModel> ChangeVideo(Guid Url)
+        public Task<VideoModel> ChangeVideo(string Url)
         {
             return null;
         }

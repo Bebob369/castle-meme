@@ -30,11 +30,12 @@ namespace castle_web.Controllers
         {
             if (videoRow != null)
             {
+                var relativePath = Path.Combine(@"\Videos", videoRow.FileName);
                 var filePath = Path.Combine(_appEnvironment.WebRootPath + @"\Videos", videoRow.FileName);
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     video.Owner = User.Identity.Name;
-                    video.Path = filePath;
+                    video.Path = relativePath;
                     await videoRow.CopyToAsync(stream);
                     await videoRepository.AddNewVideo(video);
                 }

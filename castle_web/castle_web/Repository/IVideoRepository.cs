@@ -12,8 +12,9 @@ namespace castle_web.Repository
         Task<VideoModel> AddNewVideo(VideoModel video);
         Task<List<VideoModel>> GetAllVideosOfUser(string user);
         Task<List<VideoModel>> GetTopVideosAsync(int count);
-        Task<List<VideoModel>> SearchVideo(string Name);
-        Task<VideoModel> DeleteVideo(Guid Url);
-        Task<VideoModel> ChangeVideo(Guid Url);
+        Task<List<VideoModel>> SearchVideo(string name);
+        Task<VideoModel> GetVideoByUrl(string url);
+        Task<VideoModel> DeleteVideo(string url);
+        Task<VideoModel> ChangeVideo(string url);
     }
 }
