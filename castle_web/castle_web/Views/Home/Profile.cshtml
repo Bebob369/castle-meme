@@ -20,14 +20,14 @@ else
 {
     @foreach (var video in Model)
     {
-        <a href="home">
-            <div class="embed-responsive embed-responsive-16by9"
-                 width="560" height="315">
-                <video controls="controls">
-                    <source src="@video.Path" type="video/mp4" />
+        <div class="embed-responsive embed-responsive-16by9"
+             width="50"
+             height="50">
+            <a href="Content/@video.Url">
+                <video controls="controls" width="50" height="50">
+                    <source src="@video.Path" type="video/mp4"/>
                 </video>
-            </div>
-
-        </a>
+            </a>
+        </div>
     }
 }

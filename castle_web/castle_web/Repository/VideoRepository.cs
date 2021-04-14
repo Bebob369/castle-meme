@@ -50,6 +50,7 @@ namespace castle_web.Repository
                 Describe = video.Describe,
                 Name = video.Name,
                 Owner = video.Owner,
+                Url = video.Url,
                 Path = video.Path,
                 Views = video.Views
             }).ToListAsync();

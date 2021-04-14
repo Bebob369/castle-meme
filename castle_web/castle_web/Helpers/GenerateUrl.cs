@@ -10,7 +10,7 @@ namespace castle_web.Helpers
     {
         private static string symbols = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-";
         private static Random random = new Random();
-
+        //TODO: rewrite this to avoid the collision
         public static string GenerateUrlString()
         {
             string url = string.Empty;

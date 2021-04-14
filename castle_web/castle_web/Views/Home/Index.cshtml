@@ -6,7 +6,6 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
 @if (SignInManager.IsSignedIn(User))
 {
     <div class="text-center">
@@ -15,6 +14,7 @@
 }
 else
 {
+   
     <div class="text-center">
         <h1 class="display-4">Welcome, who are you?</h1>
     </div>
